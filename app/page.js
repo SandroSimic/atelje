@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import mladenLanding from "@/public/images/mladenLanding.png";
 import mladenLandingSmall from "@/public/images/mladenLandingSmall.jpg";
