@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable"; // Correct import
@@ -22,7 +22,7 @@ const Gallery = ({ images }) => {
 
   const goToPrev = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
     );
   };
 
@@ -38,7 +38,7 @@ const Gallery = ({ images }) => {
         <h1 className="py-10 text-center text-2xl uppercase text-white lg:text-5xl">
           Galerija
         </h1>
-        <div className="p-2 md:p-0 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-5 p-2 md:grid-cols-2 md:p-0 lg:grid-cols-12">
           {images.map((image, index) => (
             <div
               key={index}
@@ -70,50 +70,52 @@ const Gallery = ({ images }) => {
 
       {/* Modal */}
       {isOpen && (
-  <div
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
-    {...handlers} // Attach swipe handlers here
-  >
-    <button
-      onClick={closeModal}
-      className="absolute top-5 right-5 text-white text-6xl"
-    >
-      &times;
-    </button>
-    <div className="relative">
-      <Image
-        src={images[currentIndex].src}
-        alt={images[currentIndex].alt}
-        width={800}
-        height={600}
-        className="rounded-lg"
-      />
-      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 text-center text-white">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl uppercase">
-          {images[currentIndex].title}
-        </h2>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl">
-          {images[currentIndex].technique}
-        </p>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl">
-          {images[currentIndex].dimensions}
-        </p>
-      </div>
-    </div>
-    <button
-      onClick={goToPrev}
-      className="absolute left-10 text-white text-3xl"
-    >
-      &#8592;
-    </button>
-    <button
-      onClick={goToNext}
-      className="absolute right-10 text-white text-3xl"
-    >
-      &#8594;
-    </button>
-  </div>
-)}
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
+          {...handlers} // Attach swipe handlers here
+        >
+          <button
+            onClick={closeModal}
+            className="absolute right-5 top-5 text-6xl text-white"
+          >
+            &times;
+          </button>
+          <div className="relative">
+            <Image
+              src={images[currentIndex].src}
+              alt={images[currentIndex].alt}
+              width={800}
+              height={600}
+              className="rounded-lg"
+              placeholder="blur"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 50vw"
+            />
+            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 transform text-center text-white">
+              <h2 className="text-xl uppercase sm:text-2xl md:text-3xl lg:text-4xl">
+                {images[currentIndex].title}
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl">
+                {images[currentIndex].technique}
+              </p>
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl">
+                {images[currentIndex].dimensions}
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={goToPrev}
+            className="absolute left-10 text-3xl text-white"
+          >
+            &#8592;
+          </button>
+          <button
+            onClick={goToNext}
+            className="absolute right-10 text-3xl text-white"
+          >
+            &#8594;
+          </button>
+        </div>
+      )}
     </div>
   );
 };

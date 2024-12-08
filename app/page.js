@@ -17,6 +17,7 @@ import Link from "next/link";
 import ExhibitionsFAQ from "@/components/mladen/Izlozbe";
 import Container from "@/components/Container";
 import Gallery from "@/components/mladen/Gallery";
+import { Suspense } from "react";
 
 const socials = [
   {
@@ -135,7 +136,7 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 block lg:hidden">
           <Image
             src={mladenLandingSmall}
-             alt="Mladen Mićić umjetnički rad na manjem ekranu"
+            alt="Mladen Mićić umjetnički rad na manjem ekranu"
             layout="fill"
             className="object-cover brightness-50 filter"
             loading="lazy"
@@ -254,7 +255,9 @@ export default function Home() {
       </div>
       <div className="flex flex-col items-center bg-background-primary text-white">
         <Container>
-          <Gallery images={images} />
+          <Suspense fallback={<h1>Laoding Gallery....</h1>}>
+            <Gallery images={images} />
+          </Suspense>
         </Container>
       </div>
       <footer className="bg-background-primary">
