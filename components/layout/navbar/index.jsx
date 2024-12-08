@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 function Navbar() {
@@ -10,31 +10,55 @@ function Navbar() {
     setMenuOpen(!menuOpen);
   };
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
-    <nav className="bg-background-primary-transparent w-full h-[6.25rem] flex items-center justify-between text-white px-5 sm:px-10 lg:px-20 absolute top-0 left-0 z-10">
-      <div className="flex items-center justify-center w-full">
-        <ul className={`fixed top-0 left-0 w-full h-full bg-background-primary flex flex-col items-center justify-center gap-10 text-center transform ${menuOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 sm:relative sm:translate-x-0 sm:flex sm:flex-row sm:gap-10 sm:bg-transparent sm:w-auto sm:h-auto`}>
-          <li className="group relative">
-            <Link href="/" className="uppercase text-3xl md:text-4xl" onClick={() => setMenuOpen(false)}>
-              Mladen Mićić
-            </Link>
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
-          </li>
-          <li className="group relative">
-            <Link href="/atelje" className="uppercase text-3xl md:text-4xl" onClick={() => setMenuOpen(false)}>
-              Atelje 98
-            </Link>
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
-          </li>
-        </ul>
-        <button
-          className="sm:hidden absolute right-5 sm:right-10 text-white text-3xl z-20 focus:outline-none"
-          onClick={toggleMenu}
-        >
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </button>
-      </div>
-    </nav>
+    <div className="absolute w-full h-full">
+      <nav className="absolute left-0 top-0 z-10 flex h-[6.25rem] w-full items-center justify-between bg-background-primary-transparent px-5 text-white sm:px-10 lg:px-20">
+        <div className="flex w-full items-center justify-center">
+          <ul
+            className={`fixed left-0 top-0 flex h-full w-full transform flex-col items-center justify-center gap-10 bg-background-primary text-center ${menuOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 sm:relative sm:flex sm:h-auto sm:w-auto sm:translate-x-0 sm:flex-row sm:gap-10 sm:bg-transparent`}
+          >
+            <li className="group relative">
+              <Link
+                href="/"
+                className="text-3xl uppercase md:text-4xl"
+                onClick={() => setMenuOpen(false)}
+              >
+                Mladen Mićić
+              </Link>
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </li>
+            <li className="group relative">
+              <Link
+                href="/atelje"
+                className="text-3xl uppercase md:text-4xl"
+                onClick={() => setMenuOpen(false)}
+              >
+                Atelje 98
+              </Link>
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <button
+        className="absolute right-5 top-10  z-20 text-3xl text-white focus:outline-none sm:right-10 sm:hidden"
+        onClick={toggleMenu}
+      >
+        {menuOpen ? <FaTimes /> : <FaBars />}
+      </button>
+    </div>
   );
 }
 
