@@ -3,14 +3,7 @@ import mladenLanding from "@/public/images/mladenLanding.png";
 import mladenLandingSmall from "@/public/images/mladenLandingSmall.jpg";
 import mladenAbout from "@/public/images/mladenAbout.png";
 import mladenAboutSmall from "@/public/images/mladenAboutSmall.jpg";
-import odsutnostOne from "@/public/images/odsutnost1.jpg";
-import odsutnostTwo from "@/public/images/odsutnost2.jpg";
-import odsutnostTree from "@/public/images/odsutnost3.jpg";
-import clouds from "@/public/images/oblak.jpg";
-import balls from "@/public/images/lopte.jpg";
-import gun from "@/public/images/pistolj.jpg";
-import image3 from "@/public/images/slika3.jpg";
-import tractor from "@/public/images/traktor.jpg";
+
 import { FaInstagram, FaPhone } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import Link from "next/link";
@@ -34,91 +27,6 @@ const socials = [
   },
 ];
 
-const images = [
-  {
-    src: odsutnostOne,
-    alt: "Odsutnost 1",
-    title: "ODSUTNOST BR.1",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "61x98cm",
-    className: "lg:col-span-6",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[450px] w-full",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: odsutnostTwo,
-    alt: "Odsutnost 2",
-    title: "ODSUTNOST BR.2",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "67x100cm",
-    className: "lg:col-span-6",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[450px] w-full",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: tractor,
-    alt: "tractor image",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "70x100cm",
-    className: "lg:col-span-3",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: clouds,
-    alt: "Oblak",
-    technique: "Grafit na papiru",
-    dimensions: "16x16cm",
-    className: "lg:col-span-6 lg:row-span-3",
-    width: 500,
-    height: 500,
-    imageClassname: "h-[350px] md:h-[400px] lg:h-full w-full",
-  },
-  {
-    src: balls,
-    alt: "Lopte",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "50x70cm",
-    className: "lg:col-span-3 lg:row-start-2",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: gun,
-    alt: "Pistolj",
-    className: "lg:col-span-3 lg:row-start-3",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "66x99cm",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: image3,
-    alt: "Slika 3",
-    className: "lg:col-span-3 lg:row-start-3",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "50x70cm",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: odsutnostTree,
-    alt: "Odsutnost 3",
-    title: "ODSUTNOST BR.3",
-    className: "lg:col-span-6 lg:row-start-4",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "70x100cm",
-    width: 500,
-    height: 500,
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[450px] w-full",
-  },
-];
 
 export default function Home() {
   return (
@@ -254,7 +162,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col items-center bg-background-primary text-white">
         <Container>
-            <Gallery images={images} />
+            <Gallery />
         </Container>
       </div>
       <footer className="bg-background-primary">
