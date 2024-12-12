@@ -1,105 +1,100 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { useSwipeable } from "react-swipeable"; // Correct import
-
-import odsutnostOne from "@/public/images/odsutnost1.jpg";
-import odsutnostTwo from "@/public/images/odsutnost2.jpg";
-import odsutnostTree from "@/public/images/odsutnost3.jpg";
-import clouds from "@/public/images/oblak.jpg";
-import balls from "@/public/images/lopte.jpg";
-import gun from "@/public/images/pistolj.jpg";
-import image3 from "@/public/images/slika3.jpg";
-import tractor from "@/public/images/traktor.jpg";
+import { useSwipeable } from "react-swipeable";
 
 const Gallery = () => {
+  const images = [
+    {
+      src: "/images/odsutnost1.jpg",
+      alt: "Odsutnost 1",
+      title: "ODSUTNOST BR.1",
+      technique: "Grafitna olovka na papiru",
+      dimensions: "61x98cm",
+      className: "lg:col-span-6",
+      imageClassname: "h-[350px] md:h-[400px] lg:h-[450px] w-full",
+      width: 500,
+      height: 500,
+    },
+    {
+      src: "/images/odsutnost2.jpg",
+      alt: "Odsutnost 2",
+      title: "ODSUTNOST BR.2",
+      technique: "Grafitna olovka na papiru",
+      dimensions: "67x100cm",
+      className: "lg:col-span-6",
+      imageClassname: "h-[350px] md:h-[400px] lg:h-[450px] w-full",
+      width: 500,
+      height: 500,
+    },
+    {
+      src: "/images/traktor.jpg",
+      alt: "Tractor image",
+      title: "TRACTOR",
+      technique: "Grafitna olovka na papiru",
+      dimensions: "70x100cm",
+      className: "lg:col-span-3",
+      imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
+      width: 500,
+      height: 500,
+    },
+    {
+      src: "/images/oblak.jpg",
+      alt: "Oblak",
+      title: "OBLAK",
+      technique: "Grafit na papiru",
+      dimensions: "16x16cm",
+      className: "lg:col-span-6 lg:row-span-3",
+      imageClassname: "h-[350px] md:h-[400px] lg:h-full w-full",
+      width: 500,
+      height: 500,
+    },
+    {
+      src: "/images/lopte.jpg",
+      alt: "Lopte",
+      title: "LOPTE",
+      technique: "Grafitna olovka na papiru",
+      dimensions: "50x70cm",
+      className: "lg:col-span-3 lg:row-start-2",
+      imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
+      width: 500,
+      height: 500,
+    },
+    {
+      src: "/images/pistolj.jpg",
+      alt: "Pistolj",
+      title: "PISTOLJ",
+      technique: "Grafitna olovka na papiru",
+      dimensions: "66x99cm",
+      className: "lg:col-span-3 lg:row-start-3",
+      imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
+      width: 500,
+      height: 500,
+    },
+    {
+      src: "/images/slika3.jpg",
+      alt: "Slika 3",
+      title: "SLIKA 3",
+      technique: "Grafitna olovka na papiru",
+      dimensions: "50x70cm",
+      className: "lg:col-span-3 lg:row-start-3",
+      imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
+      width: 500,
+      height: 500,
+    },
+    {
+      src: "/images/odsutnost3.jpg",
+      alt: "Odsutnost 3",
+      title: "ODSUTNOST BR.3",
+      technique: "Grafitna olovka na papiru",
+      dimensions: "70x100cm",
+      className: "lg:col-span-6 lg:row-start-4",
+      imageClassname: "h-[350px] md:h-[400px] lg:h-[450px] w-full",
+      width: 500,
+      height: 500,
+    },
+  ];
 
-
-const images = [
-  {
-    src: odsutnostOne,
-    alt: "Odsutnost 1",
-    title: "ODSUTNOST BR.1",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "61x98cm",
-    className: "lg:col-span-6",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[450px] w-full",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: odsutnostTwo,
-    alt: "Odsutnost 2",
-    title: "ODSUTNOST BR.2",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "67x100cm",
-    className: "lg:col-span-6",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[450px] w-full",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: tractor,
-    alt: "tractor image",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "70x100cm",
-    className: "lg:col-span-3",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: clouds,
-    alt: "Oblak",
-    technique: "Grafit na papiru",
-    dimensions: "16x16cm",
-    className: "lg:col-span-6 lg:row-span-3",
-    width: 500,
-    height: 500,
-    imageClassname: "h-[350px] md:h-[400px] lg:h-full w-full",
-  },
-  {
-    src: balls,
-    alt: "Lopte",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "50x70cm",
-    className: "lg:col-span-3 lg:row-start-2",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: gun,
-    alt: "Pistolj",
-    className: "lg:col-span-3 lg:row-start-3",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "66x99cm",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: image3,
-    alt: "Slika 3",
-    className: "lg:col-span-3 lg:row-start-3",
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[225px] w-full",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "50x70cm",
-    width: 500,
-    height: 500,
-  },
-  {
-    src: odsutnostTree,
-    alt: "Odsutnost 3",
-    title: "ODSUTNOST BR.3",
-    className: "lg:col-span-6 lg:row-start-4",
-    technique: "Grafitna olovka na papiru",
-    dimensions: "70x100cm",
-    width: 500,
-    height: 500,
-    imageClassname: "h-[350px] md:h-[400px] lg:h-[450px] w-full",
-  },
-];
 
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -184,7 +179,6 @@ const images = [
               width={800}
               height={600}
               className="rounded-lg"
-              placeholder="blur"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 50vw"
             />
             <div className="absolute bottom-5 left-1/2 -translate-x-1/2 transform text-center text-white">
