@@ -16,6 +16,7 @@ import Link from "next/link";
 import { IoIosMail } from "react-icons/io";
 import ServerMap from "./ServerMap";
 
+
 export const metadata = {
   title: {
     default: "Atelje 98 | Umjetnički Prostor Bijeljina",
