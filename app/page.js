@@ -256,9 +256,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col items-center bg-background-primary text-white">
         <Container>
-          <Suspense fallback={<h1>Laoding Gallery....</h1>}>
             <Gallery images={images} />
-          </Suspense>
         </Container>
       </div>
       <footer className="bg-background-primary">
