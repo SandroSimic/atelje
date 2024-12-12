@@ -1,4 +1,3 @@
-"use client"
 import Image from "next/image";
 import mladenLanding from "@/public/images/mladenLanding.png";
 import mladenLandingSmall from "@/public/images/mladenLandingSmall.jpg";
@@ -18,7 +17,6 @@ import Link from "next/link";
 import ExhibitionsFAQ from "@/components/mladen/Izlozbe";
 import Container from "@/components/Container";
 import Gallery from "@/components/mladen/Gallery";
-import { Suspense } from "react";
 
 const socials = [
   {
